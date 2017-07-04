@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IOrderService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAPIBoilerPlate.BusinessEntities\WebAPIBoilerPlate.BusinessEntities.csproj">
+      <Project>{1682BDA2-29D3-4176-8F9F-9064E7025B7E}</Project>
+      <Name>WebAPIBoilerPlate.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAPIBoilerPlate.DataModel\WebAPIBoilerPlate.DataModel.csproj">
+      <Project>{65A3E35C-5930-4373-B687-2C94474C3F98}</Project>
+      <Name>WebAPIBoilerPlate.DataModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

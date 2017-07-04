@@ -228,6 +228,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -314,6 +315,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebAPIBoilerPlate.BusinessEntities\WebAPIBoilerPlate.BusinessEntities.csproj">
+      <Project>{1682BDA2-29D3-4176-8F9F-9064E7025B7E}</Project>
+      <Name>WebAPIBoilerPlate.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAPIBoilerPlate.Services\WebAPIBoilerPlate.Services.csproj">
+      <Project>{3541AB99-1913-4257-849E-08B22BF798F6}</Project>
+      <Name>WebAPIBoilerPlate.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
