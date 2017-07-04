@@ -13,10 +13,10 @@ namespace WebAPIBoilerPlate.DataModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebApiConnectionSetting : DbContext
+    public partial class WebAPIDBEntities : DbContext
     {
-        public WebApiConnectionSetting()
-            : base("name=WebApiConnectionSetting")
+        public WebAPIDBEntities()
+            : base("name=WebAPIDBEntities")
         {
         }
     

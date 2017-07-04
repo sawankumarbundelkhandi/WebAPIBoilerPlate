@@ -667,7 +667,7 @@
           <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <End Role="Territories" Type="Self.Territory" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="WebApiConnectionSetting" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="WebAPIDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="CustomerDemographics" EntityType="Self.CustomerDemographic" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
@@ -729,7 +729,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NorthWNDModelStoreContainer" CdmEntityContainer="WebApiConnectionSetting">
+        <EntityContainerMapping StorageEntityContainer="NorthWNDModelStoreContainer" CdmEntityContainer="WebAPIDBEntities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="NorthWNDModel.Category">
               <MappingFragment StoreEntitySet="Categories">
