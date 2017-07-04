@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebAPIBoilerPlate.Controllers;
 
 namespace WebAPIBoilerPlate.Tests.Controllers
@@ -12,10 +12,10 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void Get()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
-            IEnumerable<string> result = controller.Get();
+            var result = controller.Get();
 
             // Assert
             Assert.IsNotNull(result);
@@ -28,10 +28,10 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void GetById()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
-            string result = controller.Get(5);
+            var result = controller.Get(5);
 
             // Assert
             Assert.AreEqual("value", result);
@@ -41,7 +41,7 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void Post()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Post("value");
@@ -53,7 +53,7 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void Put()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Put(5, "value");
@@ -65,7 +65,7 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void Delete()
         {
             // Arrange
-            ValuesController controller = new ValuesController();
+            var controller = new ValuesController();
 
             // Act
             controller.Delete(5);

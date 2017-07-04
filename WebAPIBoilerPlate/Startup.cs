@@ -1,7 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using WebAPIBoilerPlate;
 
-[assembly: OwinStartup(typeof(WebAPIBoilerPlate.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace WebAPIBoilerPlate
 {

@@ -1,8 +1,8 @@
-﻿using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Serialization;
 
 namespace WebAPIBoilerPlate
 {

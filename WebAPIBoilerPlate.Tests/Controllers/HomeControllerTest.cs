@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebAPIBoilerPlate.Controllers;
 
 namespace WebAPIBoilerPlate.Tests.Controllers
@@ -11,10 +11,10 @@ namespace WebAPIBoilerPlate.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            var result = controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

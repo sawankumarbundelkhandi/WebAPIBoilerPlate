@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 #endregion Using Namespaces...
 
@@ -17,8 +18,8 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
     {
         #region Private member variables...
 
-        internal WebAPIDBEntities Context;
-        internal DbSet<TEntity> DbSet;
+        private readonly WebAPIDBEntities _context;
+        private readonly DbSet<TEntity> _dbSet;
 
         #endregion Private member variables...
 
@@ -30,8 +31,8 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <param name="context"></param>
         public GenericRepository(WebAPIDBEntities context)
         {
-            this.Context = context;
-            this.DbSet = context.Set<TEntity>();
+            _context = context;
+            _dbSet = context?.Set<TEntity>();
         }
 
         #endregion Public Constructor...
@@ -44,8 +45,8 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> Get()
         {
-            IQueryable<TEntity> query = DbSet;
-            return query.ToList();
+            IQueryable<TEntity> query = _dbSet;
+            return query?.ToList();
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public virtual TEntity GetByID(object id)
         {
-            return DbSet.Find(id);
+            return _dbSet?.Find(id);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <param name="entity"></param>
         public virtual void Insert(TEntity entity)
         {
-            DbSet.Add(entity);
+            _dbSet?.Add(entity);
         }
 
         /// <summary>
@@ -73,21 +74,16 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <param name="id"></param>
         public virtual void Delete(object id)
         {
-            TEntity entityToDelete = DbSet.Find(id);
-            Delete(entityToDelete);
-        }
+            var entityToDelete = _dbSet?.Find(id);
 
-        /// <summary>
-        /// Generic Delete method for the entities
-        /// </summary>
-        /// <param name="entityToDelete"></param>
-        public virtual void Delete(TEntity entityToDelete)
-        {
-            if (Context.Entry(entityToDelete).State == EntityState.Detached)
+            if (entityToDelete != null)
             {
-                DbSet.Attach(entityToDelete);
+                if (_context.Entry(entityToDelete).State == EntityState.Detached)
+                {
+                    _dbSet?.Attach(entityToDelete);
+                }
+                _dbSet?.Remove(entityToDelete);
             }
-            DbSet.Remove(entityToDelete);
         }
 
         /// <summary>
@@ -96,8 +92,8 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <param name="entityToUpdate"></param>
         public virtual void Update(TEntity entityToUpdate)
         {
-            DbSet.Attach(entityToUpdate);
-            Context.Entry(entityToUpdate).State = EntityState.Modified;
+            _dbSet?.Attach(entityToUpdate);
+            _context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
         /// <summary>
@@ -107,7 +103,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> GetMany(Func<TEntity, bool> where)
         {
-            return DbSet.Where(where).ToList();
+            return _dbSet?.Where(where).ToList();
         }
 
         /// <summary>
@@ -117,7 +113,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public virtual IQueryable<TEntity> GetManyQueryable(Func<TEntity, bool> where)
         {
-            return DbSet.Where(where).AsQueryable();
+            return _dbSet?.Where(where).AsQueryable();
         }
 
         /// <summary>
@@ -125,9 +121,9 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public TEntity Get(Func<TEntity, Boolean> where)
+        public TEntity Get(Func<TEntity, bool> where)
         {
-            return DbSet.Where(where).FirstOrDefault<TEntity>();
+            return _dbSet?.Where(where).FirstOrDefault();
         }
 
         /// <summary>
@@ -135,11 +131,16 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public void Delete(Func<TEntity, Boolean> where)
+        public void Delete(Func<TEntity, bool> where)
         {
-            IQueryable<TEntity> objects = DbSet.Where<TEntity>(where).AsQueryable();
-            foreach (TEntity obj in objects)
-                DbSet.Remove(obj);
+            var objects = _dbSet?.Where(where).AsQueryable();
+            if (objects != null)
+            {
+                foreach (var obj in objects)
+                {
+                    _dbSet?.Remove(obj);
+                }
+            }
         }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public virtual IEnumerable<TEntity> GetAll()
         {
-            return DbSet.ToList();
+            return _dbSet?.ToList();
         }
 
         /// <summary>
@@ -157,11 +158,11 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <param name="predicate"></param>
         /// <param name="include"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetWithInclude(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate, params string[] include)
+        public IQueryable<TEntity> GetWithInclude(Expression<Func<TEntity, bool>> predicate, params string[] include)
         {
-            IQueryable<TEntity> query = this.DbSet;
-            query = include.Aggregate(query, (current, inc) => current.Include(inc));
-            return query.Where(predicate);
+            IQueryable<TEntity> query = _dbSet;
+            query = include?.Aggregate(query, (current, inc) => current?.Include(inc));
+            return query?.Where(predicate);
         }
 
         /// <summary>
@@ -171,7 +172,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns></returns>
         public bool Exists(object primaryKey)
         {
-            return DbSet.Find(primaryKey) != null;
+            return _dbSet?.Find(primaryKey) != null;
         }
 
         /// <summary>
@@ -181,7 +182,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns>A single record that matches the specified criteria</returns>
         public TEntity GetSingle(Func<TEntity, bool> predicate)
         {
-            return DbSet.Single<TEntity>(predicate);
+            return _dbSet?.Single(predicate);
         }
 
         /// <summary>
@@ -191,7 +192,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// <returns>A single record containing the first record matching the specified criteria</returns>
         public TEntity GetFirst(Func<TEntity, bool> predicate)
         {
-            return DbSet.First<TEntity>(predicate);
+            return _dbSet?.First(predicate);
         }
 
         #endregion Public member methods...
