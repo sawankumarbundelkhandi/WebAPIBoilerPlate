@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIBoilerPlate.DataModel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIBoilerPlate.BusinessEntities", "WebAPIBoilerPlate.BusinessEntities\WebAPIBoilerPlate.BusinessEntities.csproj", "{1682BDA2-29D3-4176-8F9F-9064E7025B7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIBoilerPlate.Services", "WebAPIBoilerPlate.Services\WebAPIBoilerPlate.Services.csproj", "{3541AB99-1913-4257-849E-08B22BF798F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1682BDA2-29D3-4176-8F9F-9064E7025B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1682BDA2-29D3-4176-8F9F-9064E7025B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1682BDA2-29D3-4176-8F9F-9064E7025B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3541AB99-1913-4257-849E-08B22BF798F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3541AB99-1913-4257-849E-08B22BF798F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3541AB99-1913-4257-849E-08B22BF798F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3541AB99-1913-4257-849E-08B22BF798F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

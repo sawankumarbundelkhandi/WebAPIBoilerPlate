@@ -25,7 +25,6 @@ namespace WebAPIBoilerPlate.DataModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Order_Detail> Order_Details { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
     }
 }

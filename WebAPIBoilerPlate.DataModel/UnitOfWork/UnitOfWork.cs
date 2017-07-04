@@ -21,7 +21,6 @@ namespace WebAPIBoilerPlate.DataModel.UnitOfWork
 
         private readonly WebAPIDBEntities _context;
         private GenericRepository<Order> _orderRepository;
-        private GenericRepository<Order_Detail> _orderDetailRepository;
 
         #endregion Private member variables...
 
@@ -31,11 +30,6 @@ namespace WebAPIBoilerPlate.DataModel.UnitOfWork
         }
 
         #region Public Repository Creation properties...
-
-        /// <summary>
-        /// Get/Set Property for order_detail repository.
-        /// </summary>
-        public GenericRepository<Order_Detail> OrderDetailRepository => _orderDetailRepository ?? (_orderDetailRepository = new GenericRepository<Order_Detail>(_context));
 
         /// <summary>
         /// Get/Set Property for order repository.

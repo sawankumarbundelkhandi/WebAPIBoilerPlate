@@ -53,9 +53,6 @@
     <Compile Include="Order.cs">
       <DependentUpon>WebApiDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Order_Detail.cs">
-      <DependentUpon>WebApiDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="WebApiDataModel.Context.cs">
