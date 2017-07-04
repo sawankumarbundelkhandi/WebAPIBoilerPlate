@@ -1,6 +1,5 @@
-﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WebAPIBoilerPlate;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Mvc;
 using WebAPIBoilerPlate.Controllers;
 
 namespace WebAPIBoilerPlate.Tests.Controllers
