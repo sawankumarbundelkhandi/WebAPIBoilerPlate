@@ -9,6 +9,9 @@
 
 namespace WebAPIBoilerPlate.DataModel
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Order_Detail
     {
         public int OrderID { get; set; }
@@ -18,6 +21,5 @@ namespace WebAPIBoilerPlate.DataModel
         public float Discount { get; set; }
     
         public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

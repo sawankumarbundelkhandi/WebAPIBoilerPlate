@@ -14,7 +14,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
     /// Generic Repository class for Entity Operations
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class GenericRepository<TEntity> where TEntity : class
+    public sealed class GenericRepository<TEntity> where TEntity : class
     {
         #region Private member variables...
 
@@ -43,7 +43,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// generic Get method for Entities
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> Get()
+        public IEnumerable<TEntity> Get()
         {
             IQueryable<TEntity> query = _dbSet;
             return query?.ToList();
@@ -54,7 +54,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual TEntity GetByID(object id)
+        public TEntity GetByID(object id)
         {
             return _dbSet?.Find(id);
         }
@@ -63,7 +63,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// generic Insert method for the entities
         /// </summary>
         /// <param name="entity"></param>
-        public virtual void Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
             _dbSet?.Add(entity);
         }
@@ -72,7 +72,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// Generic Delete method for the entities
         /// </summary>
         /// <param name="id"></param>
-        public virtual void Delete(object id)
+        public void Delete(object id)
         {
             var entityToDelete = _dbSet?.Find(id);
 
@@ -90,7 +90,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// Generic update method for the entities
         /// </summary>
         /// <param name="entityToUpdate"></param>
-        public virtual void Update(TEntity entityToUpdate)
+        public void Update(TEntity entityToUpdate)
         {
             _dbSet?.Attach(entityToUpdate);
             _context.Entry(entityToUpdate).State = EntityState.Modified;
@@ -101,7 +101,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> GetMany(Func<TEntity, bool> where)
+        public IEnumerable<TEntity> GetMany(Func<TEntity, bool> where)
         {
             return _dbSet?.Where(where).ToList();
         }
@@ -111,7 +111,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public virtual IQueryable<TEntity> GetManyQueryable(Func<TEntity, bool> where)
+        public IQueryable<TEntity> GetManyQueryable(Func<TEntity, bool> where)
         {
             return _dbSet?.Where(where).AsQueryable();
         }
@@ -147,7 +147,7 @@ namespace WebAPIBoilerPlate.DataModel.GenericRepository
         /// generic method to fetch all the records from db
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll()
         {
             return _dbSet?.ToList();
         }

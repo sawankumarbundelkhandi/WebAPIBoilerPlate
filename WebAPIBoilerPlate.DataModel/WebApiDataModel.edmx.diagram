@@ -5,29 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="81ce428325614a2390b96b98f37eb36e" Name="Diagram1">
-        <EntityTypeShape EntityType="NorthWNDModel.Category" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.CustomerDemographic" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Customer" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Employee" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="NorthWNDModel.Order_Detail" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="NorthWNDModel.Order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Product" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Region" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Shipper" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Supplier" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NorthWNDModel.Territory" Width="1.5" PointX="8" PointY="9.875" IsExpanded="true" />
-        <AssociationConnector Association="NorthWNDModel.FK_Products_Categories" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Orders_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Employees_Employees" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Orders_Employees" ManuallyRouted="false" />
         <AssociationConnector Association="NorthWNDModel.FK_Order_Details_Orders" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Order_Details_Products" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Orders_Shippers" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Products_Suppliers" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.FK_Territories_Region" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.CustomerCustomerDemo" ManuallyRouted="false" />
-        <AssociationConnector Association="NorthWNDModel.EmployeeTerritories" ManuallyRouted="false" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
