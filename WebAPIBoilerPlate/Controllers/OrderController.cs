@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using WebAPIBoilerPlate.BusinessEntities;
-using WebAPIBoilerPlate.Services;
 using WebAPIBoilerPlate.Services.Interfaces;
 
 namespace WebAPIBoilerPlate.Controllers
@@ -14,9 +12,9 @@ namespace WebAPIBoilerPlate.Controllers
     {
         private readonly IOrderService _orderService;
 
-        public OrderController()
+        public OrderController(IOrderService orderService)
         {
-            _orderService = new OrderService();
+            _orderService = orderService;
         }
 
         public HttpResponseMessage Get()

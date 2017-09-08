@@ -1,21 +1,21 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using WebAPIBoilerPlate.BusinessEntities;
 using WebAPIBoilerPlate.DataModel;
-using WebAPIBoilerPlate.DataModel.UnitOfWork;
+using WebAPIBoilerPlate.DataModel.Interfaces;
 using WebAPIBoilerPlate.Services.Interfaces;
 
 namespace WebAPIBoilerPlate.Services
 {
     public class OrderService : IOrderService, IDisposable
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public OrderService()
+        public OrderService(IUnitOfWork unitOfWork)
         {
-            _unitOfWork = new UnitOfWork();
+            _unitOfWork = unitOfWork;
 
             Mapper.Initialize(cfg =>
             {

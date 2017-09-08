@@ -6,16 +6,16 @@ using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using WebAPIBoilerPlate.DataModel.GenericRepository;
+using WebAPIBoilerPlate.DataModel.Interfaces;
 
 #endregion Using Namespaces...
 
-namespace WebAPIBoilerPlate.DataModel.UnitOfWork
+namespace WebAPIBoilerPlate.DataModel
 {
     /// <summary>
     /// Unit of Work class responsible for DB transactions
     /// </summary>
-    public class UnitOfWork : IDisposable
+    public sealed class UnitOfWork : IDisposable, IUnitOfWork
     {
         #region Private member variables...
 
@@ -79,7 +79,7 @@ namespace WebAPIBoilerPlate.DataModel.UnitOfWork
         /// Protected Virtual Dispose method
         /// </summary>
         /// <param name="disposing"></param>
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposed)
             {

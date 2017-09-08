@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using WebAPIBoilerPlate.DataModel.Interfaces;
 
 #endregion Using Namespaces...
 
-namespace WebAPIBoilerPlate.DataModel.GenericRepository
+namespace WebAPIBoilerPlate.DataModel
 {
     /// <summary>
     /// Generic Repository class for Entity Operations
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public sealed class GenericRepository<TEntity> where TEntity : class
+    public sealed class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
         #region Private member variables...
 
